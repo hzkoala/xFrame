@@ -1,0 +1,3 @@
+<?php
+# exception
+$exceptionDefine = array();
