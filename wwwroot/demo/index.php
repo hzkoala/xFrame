@@ -42,19 +42,17 @@ if (Request::get('delcache') == 'do') {
 }
 
 // error and exception
-// set_error_handler(array(
-// 	'Process', 
-// 	'handleError'
-// ));
-// set_exception_handler(array(
-// 	'Process', 
-// 	'handleException'
-// ));
-
+set_error_handler(array(
+	'Process', 
+	'handleError'
+), E_ERROR | E_WARNING | E_PARSE);
+set_exception_handler(array(
+	'Process', 
+	'handleException'
+));
 
 // mvc route
-$action = Request::get('_action') ? strtolower(Request::get('_action')) : 'demo';
-$method = Request::get('_method') ? strtolower(Request::get('_method')) : 'demo';
+list ($action, $method) = Process::getRoute('demo', 'demo');
 Process::mvcRoute($action, $method);
 
 ?>

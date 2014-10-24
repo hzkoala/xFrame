@@ -1,4 +1,5 @@
 <?php
 $switch = array(
-	'cache' => false
+	'cache' => FALSE, 
+	'debug' => FALSE
 );

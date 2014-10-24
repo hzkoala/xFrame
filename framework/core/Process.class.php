@@ -37,8 +37,10 @@ final class Process {
      */
 	public static function handleError ($errno, $errstr, $errfile, $errline) {
 		# action
-		$debug = debug_backtrace();
-		print_r($debug);
+		if ($GLOBALS['switch']['debug']) {
+			debug_print_backtrace();
+		}
+		exit();
 	}
 
 
@@ -50,8 +52,10 @@ final class Process {
      */
 	public static function handleException ($exception) {
 		# action
-		$debug = debug_backtrace();
-		print_r($debug);
+		if ($GLOBALS['switch']['debug']) {
+			debug_print_backtrace();
+		}
+		exit();
 	}
 
 
@@ -113,5 +117,31 @@ final class Process {
 		$interceptors = isset($methodMap) ? $methodMap : (isset($actionMap) ? $actionMap : $allMap);
 		
 		return $interceptors;
+	}
+
+
+	/**
+	 * 获取Route参数
+	 * 
+	 * @param string $defaultAction
+	 * @param string $defaultMethod
+	 * @return NULL
+	 */
+	public static function getRoute ($defaultAction, $defaultMethod) {
+		$isMatch = preg_match('~\/([A-Za-z0-9_]+)\/([A-Za-z0-9_]+)~', $_SERVER['REQUEST_URI'], $match);
+		
+		if ($isMatch) {
+			$ret = array(
+				$match[1], 
+				$match[2]
+			);
+		} else {
+			$ret = array(
+				$defaultAction, 
+				$defaultMethod
+			);
+		}
+		
+		return $ret;
 	}
 }
