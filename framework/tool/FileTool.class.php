@@ -14,5 +14,29 @@ final class FileTool {
 			unlink($file);
 		}
 	}
+
+
+	/**
+	 * 创建目录
+	 * 
+	 * @param string $path
+	 * @return NULL
+	 */
+	public static function createDir ($path) {
+		mkdir($path, 0777, TRUE);
+		chmod($path, 0777);
+	}
+
+
+	/**
+	 * 创建文件
+	 * 
+	 * @param string $path
+	 * @return NULL
+	 */
+	public static function createFile ($path) {
+		touch($path);
+		chmod($path, 0777);
+	}
 }
 ?>

@@ -3,7 +3,7 @@
 // some basic settings
 ini_set('memory_limit', '32M');
 mb_internal_encoding('UTF-8');
-error_reporting(E_ERROR | E_WARNING | E_PARSE);
+error_reporting(E_ALL ^ E_NOTICE);
 
 // define basic path
 define('ROOT', realpath('../..')); // @todo: edit this value if the www dir is changed 
@@ -45,7 +45,7 @@ if (Request::get('delcache') == 'do') {
 set_error_handler(array(
 	'Process', 
 	'handleError'
-), E_ERROR | E_WARNING | E_PARSE);
+), E_ALL ^ E_NOTICE);
 set_exception_handler(array(
 	'Process', 
 	'handleException'

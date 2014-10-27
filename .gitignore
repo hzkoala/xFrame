@@ -18,3 +18,4 @@ project/demo/cache/template_cache
 project/demo/log/business
 project/demo/log/framework
 project/demo/log/server
+project/demo/config/class.map.inc

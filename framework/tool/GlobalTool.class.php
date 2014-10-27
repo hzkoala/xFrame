@@ -108,28 +108,6 @@ final class GlobalTool {
 
 
 	/**
-	 * 获取标准格式的时间
-	 * 
-	 * @param int|string $time
-	 * @return string
-	 */
-	public static function getDatetime ($time = '') {
-		# param
-		if (! $time) {
-			$time = time();
-		} elseif (is_string($time)) {
-			$time = strtotime($time);
-		}
-		
-		# action
-		$datetime = date('Y-m-d H:i:s', $time);
-		
-		# return
-		return $datetime;
-	}
-
-
-	/**
 	 * 清空缓存
 	 * 
 	 * @return NULL

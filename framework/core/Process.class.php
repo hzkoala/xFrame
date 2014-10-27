@@ -40,6 +40,14 @@ final class Process {
 		if ($GLOBALS['switch']['debug']) {
 			debug_print_backtrace();
 		}
+		
+		// log
+		$data = array(
+			'msg' => $errstr, 
+			'trace' => $errline . '@' . $errfile
+		);
+		Log::error($data, 'error');
+		
 		exit();
 	}
 
@@ -55,6 +63,15 @@ final class Process {
 		if ($GLOBALS['switch']['debug']) {
 			debug_print_backtrace();
 		}
+		
+		// log
+		$data = array(
+			'msg' => $exception->getMessage(), 
+			'trace' => $exception->getTraceAsString(), 
+			'server' => $_SERVER
+		);
+		Log::exception($data, 'exception');
+		
 		exit();
 	}
 
