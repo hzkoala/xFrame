@@ -1,0 +1,20 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    #OPTIONS Indexes
+
+    # @ -> www
+    RewriteCond %{HTTP_HOST} ^hanzheng.info$ [NC]
+    RewriteRule ^(.*)$ http://www.hanzheng.info/$1 [L,R=301]
+
+    RewriteCond %{HTTP_HOST} ^hanzheng.me$ [NC]
+    RewriteRule ^(.*)$ http://www.hanzheng.me/$1 [L,R=301]
+
+    # www -> 子目录/www
+    RewriteCond %{HTTP_HOST} ^www.hanzheng.info$ [NC]
+    RewriteCond %{REQUEST_URI} !^/www/ [NC]
+    RewriteRule ^(.*)$ /www/$1 [L]
+
+    RewriteCond %{HTTP_HOST} ^www.hanzheng.me$ [NC]
+    RewriteCond %{REQUEST_URI} !^/www/ [NC]
+    RewriteRule ^(.*)$ /www/$1 [L]
+</IfModule>

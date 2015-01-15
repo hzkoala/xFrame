@@ -1,0 +1,19 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    #OPTIONS Indexes
+
+    #默认首页
+    #RewriteCond %{REQUEST_URI} ^/www/?$
+    #RewriteRule .* /index/index/ [R]
+
+    #结尾加/
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_URI} ^/www/[A-Za-z0-9_]+/[A-Za-z0-9_]+$
+    RewriteRule ^([A-Za-z0-9_]+)/([A-Za-z0-9_]+)$ /$1/$2/ [R]
+
+    #非静态文件请求Rewrite获取Action和Method参数
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !\.(js|ico|gif|jpg|png|css|txt)$
+    RewriteRule ^([A-Za-z0-9_]+)/([A-Za-z0-9_]+)/$ /index.php\?_action=$1&_method=$2&%{QUERY_STRING} [L]
+
+</IfModule>
