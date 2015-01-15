@@ -48,3 +48,8 @@
 
 ## Demo项目
 
+- 复制`wwwroot/demo`文件夹, 并更改名称
+- 复制`project/demo`文件夹, 并修改名称
+- 根据虚拟主机实际目录情况, 修改`index.php`中的配置项
+- 访问`http://domain/?remap=do`, 生成Autoload地图
+- 访问`http://domain/demo/demo`, 大功告成, 后续根据项目需求修改即可
